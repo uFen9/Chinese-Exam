@@ -1,6 +1,5 @@
 \documentclass[twocolumn,landscape,UTF8]{ctexart}
 \usepackage{lastpage}
-%\usepackage{times} %use the Times New Roman fonts
 \usepackage{color}
 \usepackage{wrapfig}%插入图片
 \usepackage{tikz}%
@@ -9,7 +8,6 @@
 \usepackage{pgfplots}
 \usepackage{tikz,tikz-3dplot}
 \usetikzlibrary{shapes.geometric, arrows}
-%\usepackage{placeins}
 \usepackage{ulem}
 \usepackage{titlesec}
 \usepackage{graphicx}
@@ -29,8 +27,7 @@
 \usepackage{tikz,pgfplots}	% 绘图
 \usepackage{tkz-euclide,pgfplots}
 \usetikzlibrary{automata,positioning}
-%\usepackage[paperwidth=18.4cm,paperheight=26cm,top=1.5cm,bottom=2cm,right=2cm]{geometry} % 单页
-\usepackage[paperwidth=36.8cm,paperheight=26cm,top=2.5cm,bottom=2cm,right=1cm]{geometry}
+\usepackage[paperwidth=37cm,paperheight=26cm,top=2cm,bottom=2cm,left=2.7cm]{geometry}
 \usepackage{background}
 \usepackage[firstpage]{draftwatermark}
 \SetWatermarkText{}	% 添加自行编辑的水印
@@ -38,23 +35,22 @@
 \SetWatermarkScale{0.4}
 \SetBgContents{}	%去掉draft水印
 \lstset{language=C,keywordstyle=\color{red},showstringspaces=false,rulesepcolor=\color{green}}
-\oddsidemargin=1.2cm	%奇数页页边距
-\evensidemargin=0.5cm	%偶数页页边距
 
 \textwidth=31.5cm	%文本的宽度 单页
 
 \newsavebox{\zdx}	%装订线
 
-\newcommand{\putzdx}{\marginpar{
-	\parbox{1cm}{
-		\vspace{-1.6cm}
-		\rotatebox[origin=c]{90}{
+\newcommand{\putzdx}
+{
+	\marginpar
+	{
+		\vspace{-1.5cm}
+		\rotatebox[origin=c]{90}
+		{
   			\usebox{\zdx}
   		}
   	}
-}}
-
-\newcommand{\blank}{\uline{\textcolor{white}{a}\ \textcolor{white}{a}\ \textcolor{white}{a}\ \textcolor{white}{a}\ \textcolor{white}{a}\ \textcolor{white}{a}\ \textcolor{white}{a}\ \textcolor{white}{a}\ \textcolor{white}{a}\ \textcolor{white}{a}\ \textcolor{white}{a}}}
+}
 
 \newcommand{\me}{\mathrm{e}}  %定义 对数常数e，虚数符号i,j以及微分算子d为直立体。
 \newcommand{\mi}{\mathrm{i}}
@@ -62,33 +58,18 @@
 \newcommand{\dif}{\mathrm{d}}
 \newcommand{\bs}{\boldsymbol}%数学黑体
 \newcommand{\ds}{\displaystyle}
-%通常我们使用的分数线是系统自己定义的分数线，即分数线的长度的预设值是分子或分母所占的最大宽度，如何让分数线的长度变长成，我们%可以在分子分母添加间隔来实现。如中文分式的命令可以定义为：
-%\newcommand{\chfrac[2]}{\cfrac{\;#1\;}{\;#2\;}}
-%\frac{1}{2} \qquad \chfrac{1}{2}
 
 %选择题
 \newcommand{\fourch}[4]{\\\begin{tabular}{*{4}{@{}p{3.5cm}}}A.~#1 & B.~#2 & C.~#3 & D.~#4\end{tabular}} % 四行
-\newcommand{\twoch}[4]{\\\begin{tabular}{*{2}{@{}p{7cm}}}A.~#1 & B.~#2\end{tabular}\\\begin{tabular}{*{2}{@{}p{7cm}}}C.~#3 &
-		D.~#4\end{tabular}}  %两行
+\newcommand{\twoch}[4]{\\\begin{tabular}{*{2}{@{}p{7cm}}}A.~#1 & B.~#2\end{tabular}\\\begin{tabular}{*{2}{@{}p{7cm}}}C.~#3 & D.~#4\end{tabular}}  %两行
 \newcommand{\onech}[4]{\\A.~#1 \\ B.~#2 \\ C.~#3 \\ D.~#4}  % 一行
 
 \renewcommand{\headrulewidth}{0pt}
 \pagestyle{fancy}
-
 \setlength\columnsep{1.5cm}
+\begin{document} 
 
-\begin{document} % 在begin前面加了一个空格以免出现显示错误，编译时应该去掉
-
-%密封线
-\sbox{\zdx}
-{\parbox{24cm}{\centering
-	\textbf{学校}\underline{\makebox[28mm][c]{}}
-	\textbf{姓名}\underline{\makebox[28mm][c]{}}
-	\textbf{班级}\underline{\makebox[28mm][c]{}}
-	\textbf{座号}\underline{\makebox[28mm][c]{}}\\
-\vspace{6mm}
-\dotfill{}\\
-}}
+\fancyhf{} %去除默认上下标
 
 %脚注，出现问题调两个参数
 \makeatletter
@@ -101,24 +82,51 @@
 \newcounter{fox}
 \addtocounter{foo}{1}
 \addtocounter{fox}{0} 
-\fancyfoot[CE,CO]{\hspace*{1.5cm} 高二数学~~第\,\refstepcounter{fox}\thefoo\refstepcounter{foo}\,页 (共~\ref{LastFox}~页) \hspace*{11.5cm} 高二数学~~第\,\refstepcounter{fox}\thefoo\refstepcounter{foo}\,页 (共~\ref{LastFox}~页)}
+\fancyfoot[CE,CO]
+{
+	\hspace*{0.75cm}
+	高二数学~~第\,\refstepcounter{fox}\thefoo\refstepcounter{foo}\,页 (共~\ref{LastFox}~页)
+	\hspace*{12.25cm}
+	高二数学~~第\,\refstepcounter{fox}\thefoo\refstepcounter{foo}\,页 (共~\ref{LastFox}~页)
+}
+
+%密封线
+\sbox{\zdx}
+{
+	\parbox{24cm}
+	{	
+		\centering
+		\textbf{学校}\underline{\makebox[28mm][c]{}}
+		\textbf{姓名}\underline{\makebox[28mm][c]{}}
+		\textbf{班级}\underline{\makebox[28mm][c]{}}
+		\textbf{座号}\underline{\makebox[28mm][c]{}}\\
+		\vspace{2mm}
+		\dotfill{}
+	}
+}
+
+\setlength{\marginparsep}{1.25cm}%密封线与文档之间的间隔；
+
+%非常重要！！！用于奇数页添加密封线
+%-----------------------------------
+\putzdx %装订线释放
+%-----------------------------------
 
 %标题，局部替换即可
 \begin{spacing}{1.25}
 	\setstretch{1.5}
 	\begin{center}
-		{\fontsize{17pt}{\baselineskip} \selectfont 题目自拟\\[9pt]
-			
-		\textbf{\fontsize{22pt}{\baselineskip}\selectfont 数\quad 学}} %字与字之间必须加上 \quad 全角空格
+	{
+		%字与字之间必须加上 \quad 全角空格
+		\fontsize{17pt}{\baselineskip} \selectfont 题目自拟\\[9pt]		
+		\textbf{\fontsize{22pt}{\baselineskip}\selectfont 数\quad 学}
+	}
 	\end{center}
 \end{spacing}
 
-\vspace{-1.3cm}
-\setlength{\marginparsep}{2cm}%密封线与文档之间的间隔；
-\putzdx %%装订线--奇页数
-\vspace{1.3cm}
+\vspace{10pt}
 
-\noindent\textbf{注意事项:}
+\textbf{注意事项:}
 
 1. 答题前，考生务必在试题卷、答题卡规定的地方填写自己的准考证号、姓名。
 
@@ -127,53 +135,56 @@
 3. 考试结束，考生必须将试题卷和答题卡一并交回。
 
 \vspace{6pt}
-\begin{spacing}{1.25}
 
-\noindent\textbf{一、选择题：本大题共~8~个小题，每小题~5~分，共~40~分。在每小题给出的四个选项中，只有一项是符合题目要求的。}\hangindent=2em
-	\begin{enumerate}
-	\setcounter{enumi}{0}
+\begin{spacing}{1.2}
 
-		\item blank % \onech \twoch \fourch 分别对应每行1、2、4个选项，括号中填写选项内容即可，无需ABCD 
+	\noindent\textbf{一、选择题：本题共~8~小题，每小题~5~分，共~40~分。在每小题给出的四个选项中，只有一项是符合题目要求的。}\hangindent=2em
+		\begin{enumerate}
+		\setcounter{enumi}{0}
 	
-\end{enumerate}
+			\item blank % \onech \twoch \fourch 分别对应每行1、2、4个选项，括号中填写选项内容即可，无需ABCD 
 
-\noindent\textbf{二、多项选择题：本大题共~3~个小题，每小题~6~分，共~18~分。在每小题给出的选项中，有多项符合题目要求。全部选对的得~6~分，部分选对的得部分分，有选错的得~0~分。}\hangindent=2em
-	\begin{enumerate}
-	\setcounter{enumi}{8}
-
-		\item blank
-\end{enumerate}
-
-\noindent\textbf{三、填空题：本大题共~3~个小题，每小题~5~分，共~15~分。}\hangindent=2em
-	\begin{enumerate}
-	\setcounter{enumi}{11}
-			
-		\item 甲乙两人各有四张卡片，每张卡片上标有一个数字，甲的卡片上分别标有数字$1$，$3$，$5$，$7$，乙的卡片上分别标有数字$2$，$4$，$6$，$8$．两人进行四轮比赛，在每轮比赛中，两人
-		各自从自己持有的卡片中随机选一张，并比较所选卡片上的数字大小，数字大的人得$1$分，数字小的人得$0$分，然后各自弃置此轮所选的卡片（弃置的卡片在此后的轮次中不能使用），则四轮比赛后，甲的总得分不小于$2$的概率为
-		\underline{\qquad \qquad}. 	
-		%此处举出该题仅为方便CV下划线
-
-\end{enumerate}
-
-\noindent\textbf{四、解答题：本大题共~5~个小题，共~77~分。解答应写出文字说明、证明过程或演算步骤。}\hangindent=2em
-	\begin{enumerate}
-	\setcounter{enumi}{14}
+	\end{enumerate}
 	
-	\item (\,13\,分\,) \\
-	blank
+	\noindent\textbf{二、多项选择题：本题共~3~小题，每小题~6~分，共~18~分。在每小题给出的选项中，有多项符合题目要求。全部选对的得~6~分，部分选对的得部分分，有选错的得~0~分。}\hangindent=2em
+		\begin{enumerate}
+		\setcounter{enumi}{8}
 
-	\item (\,15\,分\,) \\
-	blank
+			\item blank
 
-	\item (\,15\,分\,) \\
-	blank
+	\end{enumerate}
 
-	\item (\,17\,分\,) \\
-	blank
+	\noindent\textbf{三、填空题：本题共~3~小题，每小题~5~分，共~15~分。}\hangindent=2em
+		\begin{enumerate}
+		\setcounter{enumi}{11}
+	
+			\item 甲乙两人各有四张卡片，每张卡片上标有一个数字，甲的卡片上分别标有数字$1$，$3$，$5$，$7$，乙的卡片上分别标有数字$2$，$4$，$6$，$8$．两人进行四轮比赛，在每轮比赛中，两人
+			各自从自己持有的卡片中随机选一张，并比较所选卡片上的数字大小，数字大的人得$1$分，数字小的人得$0$分，然后各自弃置此轮所选的卡片（弃置的卡片在此后的轮次中不能使用），则四轮比赛后，甲的总得分不小于$2$的概率为
+			\underline{\qquad \qquad}.
+			%此处举出该题仅为方便CV下划线
 
-	\item (\,17\,分\,) \\
-	blank
+	\end{enumerate}
+	
+	\noindent\textbf{四、解答题：本题共~5~小题，共~77~分。解答应写出文字说明、证明过程或演算步骤。}\hangindent=2em
+		\begin{enumerate}
+		\setcounter{enumi}{14}
 
-\end{enumerate}
-\end{spacing}
+		\item (\,13\,分\,) \\
+		blank
+
+		\item (\,15\,分\,) \\
+		blank
+
+		\item (\,15\,分\,) \\
+		blank
+
+		\item (\,17\,分\,) \\
+		blank
+
+		\item (\,17\,分\,) \\
+		blank
+
+		\end{enumerate}
+
+\end{spacing}	
 \end{document}
